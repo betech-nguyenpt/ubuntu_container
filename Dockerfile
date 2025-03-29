@@ -1,11 +1,10 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-# Install curl
-RUN apt install -y curl
+# Install components
+RUN apt install -y wget php-cli php-zip unzip curl openssh-client git
 # Install nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-# Install openssh-client
-RUN apt install -y openssh-client
-# Install git
-RUN apt install -y git
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
